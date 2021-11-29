@@ -23,7 +23,8 @@ public class FamilyTree {
         if (depth == 0) {
             return null;
         } else if (depth == 1) {
-            maxChildren = maxAnimals = 0;
+            maxChildren = 0;
+            maxAnimals = 0;
         }
 
         String name = names[rand.nextInt(names.length)];
