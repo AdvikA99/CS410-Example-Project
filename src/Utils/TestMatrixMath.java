@@ -23,6 +23,6 @@ public class TestMatrixMath {
         MatrixMath mm = new MatrixMath();
         double[][] actual = mm.multiplyMatrices(firstMatrix, secondMatrix);
         Assertions a = new Assertions();
-        System.out.println(a.assertThat(actual, expected));
+        //System.out.println(a.assertThat(actual, expected));
     }
 }
