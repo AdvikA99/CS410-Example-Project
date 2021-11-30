@@ -6,7 +6,7 @@ public class Person extends Node {
     private Person children[];
     private Animal pets[];
 
-    public Person(String name, Person children[], Animal pets[]) {
+    public Person(String name, Person[] children, Animal[] pets) {
         this.name = name;
         this.children = children;
         this.pets = pets;

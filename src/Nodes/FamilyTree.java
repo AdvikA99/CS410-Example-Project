@@ -13,7 +13,7 @@ public class FamilyTree {
     public FamilyTree(int maxDepth) {
         this.maxDepth = maxDepth;
         rand = new Random();
-        rootNode = generatePerson(maxDepth);
+        rootNode = this.generatePerson(maxDepth);
     }
 
     private Person generatePerson(int depth) {
@@ -31,15 +31,15 @@ public class FamilyTree {
         int numChildren = rand.nextInt(maxChildren + 1);
         int numPets = rand.nextInt(maxAnimals + 1);
 
-        Person children[] = new Person[numChildren];
-        Animal pets[] = new Animal[numPets];
+        Person[] children = new Person[numChildren];
+        Animal[] pets = new Animal[numPets];
 
         for (int i = 0; i < numChildren; i++) {
-            children[i] = generatePerson(depth - 1);
+            children[i] = this.generatePerson(depth - 1);
         }
 
         for (int i = 0; i < numPets; i++) {
-            pets[i] = generatePet(depth - 1);
+            pets[i] = this.generatePet(depth - 1);
         }
 
         Person newPerson = new Person(name, children, pets);
@@ -58,10 +58,10 @@ public class FamilyTree {
         String name = names[rand.nextInt(names.length)];
         int numChildren = rand.nextInt(maxChildren + 1);
 
-        Animal children[] = new Animal[numChildren];
+        Animal[] children = new Animal[numChildren];
 
         for (int i = 0; i < numChildren; i++) {
-            children[i] = generatePet(depth - 1);
+            children[i] = this.generatePet(depth - 1);
         }
 
         Animal pet = new Animal(name, children);
@@ -71,7 +71,7 @@ public class FamilyTree {
     public int calcNumberOfNodes() {
         int totalNodes = 0;
         if (rootNode != null) {
-            totalNodes += calcNumberOfChildNodes((Person) rootNode);
+            totalNodes += this.calcNumberOfChildNodes((Person) rootNode);
         }
 
         return totalNodes;
@@ -82,14 +82,14 @@ public class FamilyTree {
         Person children[] = person.getChildren();
         for (int i = 0; i < children.length; i++) {
             if (children[i] != null) {
-                totalNodes += calcNumberOfChildNodes(children[i]);
+                totalNodes += this.calcNumberOfChildNodes(children[i]);
             }
         }
 
         Animal pets[] = person.getPets();
         for (int i = 0; i < pets.length; i++) {
             if (pets[i] != null) {
-                totalNodes += calcNumberOfChildNodes(pets[i]);
+                totalNodes += this.calcNumberOfChildNodes(pets[i]);
             }
         }
 
@@ -99,7 +99,7 @@ public class FamilyTree {
     private int calcNumberOfChildNodes(Animal pet) {
         int totalNodes = 1;
 
-        Animal children[] = pet.getChildren();
+        Animal[] children = pet.getChildren();
         for (int i = 0; i < children.length; i++) {
             if (children[i] != null) {
                 totalNodes += calcNumberOfChildNodes(children[i]);
